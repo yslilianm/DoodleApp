@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "727875920379",
+    "firebase_url": "https://drawingapp-9bca6.firebaseio.com",
+    "project_id": "drawingapp-9bca6",
+    "storage_bucket": "drawingapp-9bca6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:727875920379:android:0b52e0a82c363fd9",
+        "android_client_info": {
+          "package_name": "com.example.android.drawingtest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "727875920379-s8qudartbh0l6l1sf81n48731k6oedka.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.drawingtest",
+            "certificate_hash": "930676ac6257a5f8b1f11e79b380c92a2febbe54"
+          }
+        },
+        {
+          "client_id": "727875920379-h5spims904lhlkaffpud103i7l3j01sf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzy4yIfgG6r7lhr45suNEhR8UTJg91xTI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "727875920379-h5spims904lhlkaffpud103i7l3j01sf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

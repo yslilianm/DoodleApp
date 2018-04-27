@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Doodle</string>
+    <string name="et_drawingTitle_hint">I am drawing ...</string>
+    <string name="tst_empty_title">Tell us what you are drawing ^</string>
+    <string name="tst_conflict_title">Not yet publish: Think of a new name for the drawing!^ </string>
+    <string name="tst_success_publish">Published to our gallery </string>
+    <string name="tst_success_save">Saved my drawing! </string>
+    <string name="tst_success_logout">You are (log) out! </string>
+    <string name="tst_success_signup">signed up successful!</string>
+    <string name="tst_success_login">Welcome back!</string>
+
+
+    <string name="tv_Account">Login to share to the world!</string>
+    <string name="et_email">Email</string>
+    <string name="et_password">Password</string>
+    <string name="et_name">Name</string>
+    <string name="spn_gender">Gender</string>
+    <string-array name="gender_array">
+        <item>Boy</item>
+        <item>Girl</item>
+        <item>Secret</item>
+    </string-array>
+
+    <string name="bt_signup">SignUp</string>
+    <string name="bt_login">LogIn</string>
+    <string name="bt_clearAll">clear all</string>
+    <string name="bt_save">save</string>
+    <string name="bt_publish">publish</string>
+    <string name="bt_skip">skip</string>
+    <string name="bt_love">love it</string>
+    <string name="tv_welcome">Welcome to doodle app!</string>
+    <string name="menu_logout">Log Out</string>
+    <string name="menu_gallery">Gallery</string>
+
+    <string name="default_title">Untitled</string>
+    <string name="default_time">Secret Time</string>
+    <string name="default_name">Me</string>
+
+
+    <string name="tst_empty_email">Please let us know your email!</string>
+    <string name="tst_empty_password">Please secretly type down your password!</string>
+    <string name="tst_empty_name">How do you want to be called?</string>
+    <string name="tst_bad_email">Try another email! This one looks weird!</string>
+
+    <string name="title_activity_test__login">Test_LoginActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_test_login">TestLoginActivity</string>
+
+
+</resources>

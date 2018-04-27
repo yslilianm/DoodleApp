@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLy"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+        <!--<Button-->
+            <!--android:id="@+id/bt_undo"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="undo"-->
+            <!--android:layout_margin="16sp">-->
+        <!--</Button>-->
+        <!--<Button-->
+            <!--android:id="@+id/bt_redo"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="redo"-->
+            <!--android:layout_margin="16sp">-->
+        <!--</Button>-->
+    <!--</LinearLayout>-->
+
+
+    <!-- Use java class as a tag name -->
+    <!--Change layout_height as according to your screen size!-->
+    <com.example.android.drawingtest.DrawingView
+        android:id="@+id/canvas"
+        android:layout_width="match_parent"
+        android:layout_height="0sp"
+        android:layout_weight="1"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:background="@android:color/transparent">
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginLeft="16sp"
+            android:layout_marginRight="16sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <EditText
+                android:id="@+id/et_drawTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/et_drawingTitle_hint"
+                android:layout_margin="16sp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/bt_clearAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bt_clearAll"
+                    android:layout_margin="16sp">
+                </Button>
+<!--At this point, we didn't have functions to read global database
+therefore, the button publish serves as reading local database-->
+                <!--<Button-->
+                    <!--android:id="@+id/bt_save"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="@string/bt_save"-->
+                    <!--android:layout_margin="16sp">-->
+                <!--</Button>-->
+
+                <Button
+                    android:id="@+id/bt_publish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bt_publish"
+                    android:layout_margin="16sp">
+                </Button>
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
+
