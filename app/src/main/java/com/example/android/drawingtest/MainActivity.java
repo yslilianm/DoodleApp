@@ -2,9 +2,9 @@ package com.example.android.drawingtest;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,25 +26,55 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private DrawingView customCanvas;
-    public EditText et_drawTitle;
+    public static Context contextOfApplication;
     static String drawingTitle;
     static String currentDrawingCode;
     static String drawingTime;
-    public boolean isClicked = false;
     static boolean isSkipLogin = false;
+    static FirebaseAuth mAuth;
+    static ArrayList<Drawing> arrayL_drawing = new ArrayList<Drawing>();
+    public EditText et_drawTitle;
+    public boolean isClicked = false;
     public DatabaseReference userRef;
     public FirebaseDatabase database;
-    static FirebaseAuth mAuth;
     public FirebaseUser user;
     public FirebaseAuth.AuthStateListener authListener;
     public Drawing drawing;
-    static ArrayList<Drawing> arrayL_drawing = new ArrayList<Drawing>();
     public FirebaseFirestore db;
+    private DrawingView customCanvas;
+
+    public static Context getContextOfApplication() {
+        return contextOfApplication;
+    }
+
+    /**
+     * Here is a bug to be solved related to orientation data lost (Bitmap)
+     */
+//    @Override
+//    public void onSaveInstanceState(Bundle toSave) {
+//        super.onSaveInstanceState(toSave);
+//        toSave.putParcelable("bitmap", customCanvas.mBitmap);
+//        Log.i("onSaveInstanceState", customCanvas.saveBitmapToString(customCanvas.mBitmap));
+//    }
+///**
+// * Save it onSaveInstanceState
+// */
 
 
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//        outState.putParcelable("obj", Drawing);
+//    }
+//
+//    @Override
+//    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+//        super.onRestoreInstanceState(savedInstanceState);
+//        MyParcelable = savedInstanceState.getParcelable("obj");
+//    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         db = FirebaseFirestore.getInstance();
         database = FirebaseDatabase.getInstance();
         userRef = database.getReference(Key.USERTEST);
@@ -69,6 +101,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         super.onCreate(savedInstanceState);
+//        /**
+//         * Retrieve state onCreate
+//         */
+//        if (savedInstanceState != null) customCanvas.mBitmap = savedInstanceState.getParcelable("bitmap");
+
         //dv = new DrawingView(this);
         setContentView(R.layout.activity_main);
         //Disable the focus
@@ -89,6 +126,44 @@ public class MainActivity extends AppCompatActivity {
         bt_share.setOnClickListener(new ButtonClick());
 
         et_drawTitle = (EditText) findViewById(R.id.et_drawTitle);
+
+        ImageButton ib_greenPaint = (ImageButton) findViewById(R.id.ib_greenPaint);
+        ib_greenPaint.setOnClickListener(new ButtonClick());
+        ImageButton ib_bluePaint = (ImageButton) findViewById(R.id.ib_bluePaint);
+        ib_bluePaint.setOnClickListener(new ButtonClick());
+        ImageButton ib_pinkPaint = (ImageButton) findViewById(R.id.ib_pinkPaint);
+        ib_pinkPaint.setOnClickListener(new ButtonClick());
+        ImageButton ib_blackPaint = (ImageButton) findViewById(R.id.ib_blackPaint);
+        ib_blackPaint.setOnClickListener(new ButtonClick());
+
+        /**
+         * Set stroke width by getting user's input through seekbar
+         */
+        SeekBar skb_stroke = (SeekBar) findViewById(R.id.skb_stroke);
+        skb_stroke.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChangeValue = Key.default_strokeWidth;
+
+            //Get the value when the bar is changed
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                progressChangeValue = i;
+                Log.i("MainAct_seekbar", Integer.toString(i));
+            }
+
+            //When the user start touching the screen
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            //When the user stop touching the screen
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                customCanvas.setStrokeWidth(progressChangeValue);
+
+                Toast.makeText(MainActivity.this, getString(R.string.tst_change_stroke) + " " + progressChangeValue,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
 
         contextOfApplication = getApplicationContext();
 
@@ -125,17 +200,18 @@ public class MainActivity extends AppCompatActivity {
         mAuth.removeAuthStateListener(authListener);
     }
 
-    public static Context contextOfApplication;
-
-    public static Context getContextOfApplication() {
-        return contextOfApplication;
-    }
-
     /**
      * Calling clearCanvas function from drawingView
      */
     public void clearCanvas() {
         customCanvas.clearCanvas();
+    }
+
+    /**
+     * Calling set new color to the paint function from drawingView
+     */
+    public void setColor(int colorId) {
+        customCanvas.setColor(colorId);
     }
 
     /**
@@ -210,7 +286,6 @@ public class MainActivity extends AppCompatActivity {
     public void viewGallery(){
         Intent intent = new Intent(this, GalleryActivity.class);
         startActivity(intent);
-
     }
 
     /**
@@ -219,6 +294,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_gallery, menu);
+
         return true;
     }
 
@@ -230,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.gallery:
                 viewGallery();
+
                 // GalleryAdapter.notifyDataSetChanged();
             default:
                 return super.onOptionsItemSelected(item);
@@ -248,6 +325,18 @@ public class MainActivity extends AppCompatActivity {
 //                    break;
                 case R.id.bt_publish:
                     sentInfoToIntent();
+                    break;
+                case R.id.ib_greenPaint:
+                    setColor(getResources().getColor(R.color.colorAccent));
+                    break;
+                case R.id.ib_bluePaint:
+                    setColor(getResources().getColor(R.color.brush_blue));
+                    break;
+                case R.id.ib_pinkPaint:
+                    setColor(getResources().getColor(R.color.brush_pink));
+                    break;
+                case R.id.ib_blackPaint:
+                    setColor(getResources().getColor(R.color.secondaryTextColor));
                     break;
             }
         }

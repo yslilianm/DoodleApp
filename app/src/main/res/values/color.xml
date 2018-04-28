@@ -8,4 +8,7 @@
     <color name="primaryTextColor">#ffffff</color>
     <color name="secondaryTextColor">#000000</color>
     <color name="btn_default">#d6d6d6</color>
+    <color name="brush_blue">#3d5aff</color>
+    <color name="brush_pink">#ec3eff</color>
+
 </resources>

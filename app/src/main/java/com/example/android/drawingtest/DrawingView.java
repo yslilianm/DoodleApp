@@ -6,21 +6,19 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.TimeZone;
-import java.util.Calendar;
-
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 
 /**
@@ -30,30 +28,27 @@ import java.util.ArrayList;
 public class DrawingView extends View {
 
     private static final String TAG = "AndroidBash";
-    private DatabaseReference myRef;
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    int action = 0;
-
-    //Here
-    String drawingCode;
+    private static final float TOUCH_TOLERANCE = 4;
+    public ArrayList<String> drawingInfo_arrayL = new ArrayList<String>();
+    public int width;
+    public int height;
     //Here
 //    private ArrayList<Path> paths = new ArrayList<Path>();
 //    private ArrayList<Path> undonePaths = new ArrayList<Path>();
-
-    public ArrayList<String> drawingInfo_arrayL = new ArrayList<String>();
-
-
-    public int width;
-    public int height;
     public Bitmap mBitmap;
+    public Context context;
+    int action = 0;
+    //Here
+    String drawingCode;
+    private DatabaseReference myRef;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private Path mPath;
     private Canvas mCanvas;
     private Paint mBitmapPaint;
-    public Context context;
     private Paint mPaint;
-
     private Paint circlePaint;
     private Path circlePath;
+    private float mX, mY;
 
     public DrawingView(Context c, AttributeSet attrs) {
         super(c, attrs);
@@ -104,9 +99,6 @@ public class DrawingView extends View {
         canvas.drawPath(mPath, mPaint);
         canvas.drawPath(circlePath, circlePaint);
     }
-
-    private float mX, mY;
-    private static final float TOUCH_TOLERANCE = 4;
 
     private void touch_start(float x, float y) {
 //        undonePaths.clear();
@@ -230,6 +222,21 @@ public class DrawingView extends View {
         //create a new String using the date format
         return formatter.format(currentTime);
     }
+
+    /**
+     * Set paint color
+     */
+    public void setColor(int colorId) {
+        mPaint.setColor(colorId);
+    }
+
+    /**
+     * Set paint stroke width
+     */
+    public void setStrokeWidth(int width) {
+        mPaint.setStrokeWidth(width);
+    }
+
 
 
 //    public void undo () {

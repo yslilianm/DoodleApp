@@ -52,7 +52,6 @@ public class SecondFragment extends Fragment {
 
     /**
      * Check if email and password is empty, if something: Login with User's input
-     *
      */
     public void logIn() {
         String email = et_email.getText().toString();
@@ -79,7 +78,7 @@ public class SecondFragment extends Fragment {
                                     if (!task.isSuccessful()) {
                                         Toast.makeText(getActivity(), task.getException().toString(), Toast.LENGTH_SHORT).show();
                                     } else {
-                                        Toast.makeText(getActivity(), task.getResult().getUser().getEmail() + getString(R.string.tst_success_login),
+                                        Toast.makeText(getActivity(), task.getResult().getUser().getEmail() + " " + getString(R.string.tst_success_login),
                                                 Toast.LENGTH_SHORT).show();
                                         getActivity().finish();
                                     }

@@ -22,5 +22,5 @@ public interface Key {
 
         String SKIPLOGIN = "skipLogin";
 
-
+        int default_strokeWidth = 8;
 }

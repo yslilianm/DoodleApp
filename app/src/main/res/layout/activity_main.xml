@@ -1,30 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLy"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
     <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="horizontal">-->
-        <!--<Button-->
-            <!--android:id="@+id/bt_undo"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="undo"-->
-            <!--android:layout_margin="16sp">-->
-        <!--</Button>-->
-        <!--<Button-->
-            <!--android:id="@+id/bt_redo"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="redo"-->
-            <!--android:layout_margin="16sp">-->
-        <!--</Button>-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal">-->
+    <!--<Button-->
+    <!--android:id="@+id/bt_undo"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="undo"-->
+    <!--android:layout_margin="16sp">-->
+    <!--</Button>-->
+    <!--<Button-->
+    <!--android:id="@+id/bt_redo"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="redo"-->
+    <!--android:layout_margin="16sp">-->
+    <!--</Button>-->
     <!--</LinearLayout>-->
 
 
@@ -34,72 +32,133 @@
         android:id="@+id/canvas"
         android:layout_width="match_parent"
         android:layout_height="0sp"
-        android:layout_weight="1"/>
+        android:layout_weight="1" />
 
     <LinearLayout
         android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_gravity="bottom"
-        android:background="@android:color/transparent">
+        android:background="@android:color/transparent"
+        android:orientation="vertical">
 
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dp"
-            android:background="@android:color/darker_gray"
             android:layout_marginLeft="16sp"
-            android:layout_marginRight="16sp"/>
+            android:layout_marginRight="16sp"
+            android:background="@android:color/darker_gray" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16sp"
+                android:layout_marginTop="24sp"
+                android:text="@string/tv_stroke" />
+
+            <SeekBar
+                android:id="@+id/skb_stroke"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24sp"
+                android:layout_weight="1"
+                android:max="30"
+                android:progress="8" />
+
+            <ImageButton
+                android:id="@+id/ib_greenPaint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="16sp"
+                android:background="@drawable/imagebutton_color"
+                android:contentDescription="@string/ib_descript_green"
+                android:tint="@color/colorAccent"
+                app:srcCompat="@drawable/ic_brush_black_24dp" />
+
+            <ImageButton
+                android:id="@+id/ib_bluePaint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="16sp"
+                android:background="@drawable/imagebutton_color"
+                android:contentDescription="@string/ib_descript_blue"
+                android:tint="@color/brush_blue"
+                app:srcCompat="@drawable/ic_brush_black_24dp" />
+
+            <ImageButton
+                android:id="@+id/ib_pinkPaint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="16sp"
+                android:background="@drawable/imagebutton_color"
+                android:contentDescription="@string/ib_descript_pink"
+                android:tint="@color/brush_pink"
+                app:srcCompat="@drawable/ic_brush_black_24dp" />
+
+            <ImageButton
+                android:id="@+id/ib_blackPaint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="16sp"
+                android:background="@drawable/imagebutton_color"
+                android:contentDescription="@string/ib_descript_black"
+                android:tint="@color/secondaryTextColor"
+                app:srcCompat="@drawable/ic_brush_black_24dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
             <EditText
                 android:id="@+id/et_drawTitle"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="@string/et_drawingTitle_hint"
-                android:layout_margin="16sp"/>
+                android:layout_margin="16sp"
+                android:layout_weight="1"
+                android:hint="@string/et_drawingTitle_hint" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/bt_clearAll"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_marginTop="16sp"
+                android:text="@string/bt_clearAll" />
 
-                <Button
-                    android:id="@+id/bt_clearAll"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/bt_clearAll"
-                    android:layout_margin="16sp">
-                </Button>
-<!--At this point, we didn't have functions to read global database
-therefore, the button publish serves as reading local database-->
-                <!--<Button-->
-                    <!--android:id="@+id/bt_save"-->
-                    <!--android:layout_width="wrap_content"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:text="@string/bt_save"-->
-                    <!--android:layout_margin="16sp">-->
-                <!--</Button>-->
+            <!--At this point, we didn't have functions to read global database
+            therefore, the button publish serves as reading local database-->
+            <!--<Button-->
+            <!--android:id="@+id/bt_save"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/bt_save"-->
+            <!--android:layout_margin="16sp">-->
+            <!--</Button>-->
 
-                <Button
-                    android:id="@+id/bt_publish"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/bt_publish"
-                    android:layout_margin="16sp">
-                </Button>
-
-
-
-            </LinearLayout>
+            <Button
+                android:id="@+id/bt_publish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16sp"
+                android:text="@string/bt_publish" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-
 </LinearLayout>
+
+
 

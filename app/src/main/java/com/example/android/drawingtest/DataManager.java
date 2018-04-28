@@ -9,16 +9,19 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /**
  * Created by yslilianm on 2018/4/20.
  */
 
+/**
+ * Note: This class currently is NOT used in the app
+ */
+
 public class DataManager {
 //   public static ArrayList<ArrayList<String>> drawingInfos = new ArrayList<ArrayList<String>>();
-     public static ArrayList<String> drawingInfo_arrayL = new ArrayList<String>();
+public static ArrayList<String> drawingInfo_arrayL = new ArrayList<String>();
 
 //   public static List<Drawing> drawingList;
     /**
@@ -101,6 +104,7 @@ public class DataManager {
 
                 collectDrawingInfo((Map<String, Object>) dataSnapshot.getValue());
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) { }
 

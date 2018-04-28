@@ -1,5 +1,6 @@
 package com.example.android.drawingtest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -139,7 +140,10 @@ public class GalleryActivity extends AppCompatActivity {
      * Logout User account
      */
     public void logOut() {
+        MainActivity.arrayL_drawing.clear();
         MainActivity.mAuth.signOut();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
         Toast.makeText(GalleryActivity.this, getString(R.string.tst_success_logout), Toast.LENGTH_SHORT).show();
     }
 

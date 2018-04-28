@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">插画</string>
+    <string name="et_drawingTitle_hint">我正在画图...</string>
+    <string name="tst_empty_title">你想画点什么呢</string>
+    <string name="tst_conflict_title">未发布：请给你的画起一个新名字</string>
+    <string name="tst_success_publish">已发布</string>
+    <string name="tst_success_logout">已登出</string>
+    <string name="tv_Account">请登入你的账户</string>
+    <string name="et_email">邮箱</string>
+    <string name="et_password">密码</string>
+    <string name="et_name">名字</string>
+    <string name="spn_gender">性别</string>
+    <string name="bt_signup">注册</string>
+    <string name="bt_login">登录</string>
+    <string name="bt_clearAll">全部清除</string>
+    <string name="bt_publish">发布</string>
+    <string name="bt_love">点赞</string>
+    <string name="bt_skip">跳过</string>
+    <string name="tv_welcome">欢迎来到插画软件！!</string>
+    <string name="default_title">未命名</string>
+    <string name="tst_empty_email">请输入你的邮箱</string>
+    <string name="tst_empty_password">请输入你的密码</string>
+    <string name="tst_empty_name">你想被怎么称呼</string>
+    <string name="default_time">秘密</string>
+    <string name="default_name">我</string>
+    <string name="menu_logout">登出</string>
+    <string name="action_settings">设置</string>
+    <string name="tst_success_signup">成功注册！</string>
+    <string name="tst_success_login">欢迎回来！</string>
+    <string name="menu_gallery">相册</string>
+</resources>
